@@ -1,0 +1,16 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Hermes / local production outputs
+Hermes-outputs/
+stickman-outputs/
+outputs/
+render_report.json
+video_final*.mp4
+narracao.mp3
