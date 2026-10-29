@@ -13,10 +13,19 @@ skills/stickman-explainer-engine/
 
 ## Instalação
 
-Instale a skill diretamente do GitHub:
+### 1. Revise a skill
+
+Confira os detalhes e os arquivos que serão instalados:
 
 ```bash
 hermes skills inspect gabrielbwitte/virais-stickman/skills/stickman-explainer-engine
+```
+
+### 2. Instale a skill
+
+Depois da revisão, instale-a:
+
+```bash
 hermes skills install gabrielbwitte/virais-stickman/skills/stickman-explainer-engine
 ```
 
