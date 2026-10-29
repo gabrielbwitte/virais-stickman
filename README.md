@@ -1,6 +1,6 @@
 # Stickman Explainer Engine — Hermes Skill
 
-Skill Hermes para produzir vídeos explicativos narrados com bonecos palito. Aceita temas pesquisáveis, prepara roteiro e pacote para YouTube, mantém âncoras de personagem e paleta por projeto, gera imagens/clipes usando os provedores configurados no Hermes e renderiza o MP4 localmente com FFmpeg.
+Skill para Hermes Agent que produz vídeos explicativos narrados em estilo boneco palito. Aceita temas pesquisáveis, prepara roteiro e pacote para YouTube, mantém âncoras de personagem e paleta por projeto, gera imagens e clipes com os provedores configurados no Hermes e renderiza o MP4 localmente com FFmpeg.
 
 ## Estrutura
 
@@ -11,39 +11,38 @@ skills/stickman-explainer-engine/
 └── scripts/
 ```
 
-## Instalação no Hermes
+## Instalação
 
-Depois de publicar este repositório no GitHub, instale a skill diretamente:
-
-```bash
-hermes skills inspect <owner>/<repo>/skills/stickman-explainer-engine
-hermes skills install <owner>/<repo>/skills/stickman-explainer-engine
-```
-
-Ou adicione o repositório como fonte (tap) e instale a skill:
+Instale a skill diretamente do GitHub:
 
 ```bash
-hermes skills tap add <owner>/<repo>
-hermes skills search stickman --source <owner>/<repo>
-hermes skills install <owner>/<repo>/stickman-explainer-engine
+hermes skills inspect gabrielbwitte/virais-stickman/skills/stickman-explainer-engine
+hermes skills install gabrielbwitte/virais-stickman/skills/stickman-explainer-engine
 ```
 
-Confirme a instalação e inicie a produção:
+Confirme que ela está disponível:
 
 ```bash
 hermes skills list
 ```
 
-No chat Hermes, use `/stickman-explainer-engine` ou `/stickman-explainer-engine <pedido>`.
+Em uma conversa com o Hermes, inicie a produção com `/stickman-explainer-engine` ou envie um pedido junto ao comando, por exemplo: `/stickman-explainer-engine faça um vídeo sobre vulcões`.
 
-## Requisitos
+## O que a skill produz
 
-- Hermes Agent com ferramentas `web_search`/`web_extract`, `text_to_speech`, `image_generate` e `write_file` disponíveis.
-- Configuração de provedores de imagem e áudio feita por `hermes tools`.
-- `video_gen` habilitado em `hermes tools` para gerar clipes; sem ele, a skill pode trabalhar com imagens estáticas.
-- `ffmpeg` e `ffprobe` disponíveis no mesmo backend de terminal usado pelo Hermes para produzir o arquivo final local.
+- Ideias, roteiro pesquisado e pacote de publicação para YouTube (título, thumbnail, descrição e tags).
+- Paleta e saturação escolhidas por projeto, âncoras de personagem e prompts de cena revisáveis.
+- Imagens por cena e, quando a ferramenta de vídeo estiver habilitada, clipes animados.
+- Um vídeo MP4 montado localmente com FFmpeg, sincronizado à narração.
 
-Use `hermes config migrate` para preencher a configuração não sensível `stickman.output_dir`; o padrão é `~/.hermes/cache/stickman-outputs`. Credenciais dos provedores devem ser gerenciadas pelo Hermes, nunca gravadas neste repositório.
+## Requisitos e configuração
+
+- Hermes Agent com as ferramentas `web_search`, `web_extract`, `text_to_speech`, `image_generate` e `write_file` habilitadas para os recursos correspondentes.
+- Provedores de áudio e imagem configurados no Hermes (`hermes tools`). Os modelos são controlados pela configuração ativa do Hermes.
+- `video_gen` habilitado em `hermes tools` para gerar clipes. Sem ele, a skill pode usar imagens estáticas.
+- `ffmpeg` e `ffprobe` disponíveis no backend de terminal do Hermes para renderizar o vídeo localmente.
+
+Use `hermes config migrate` para configurar `stickman.output_dir`; o padrão é `~/.hermes/cache/stickman-outputs`. Gerencie as credenciais dos provedores pelo Hermes e nunca as grave neste repositório.
 
 ## Testes locais
 
@@ -55,4 +54,4 @@ python3 -m unittest discover -s tests -v
 
 ## Licença e autoria
 
-Este repositório usa a licença [MIT](LICENSE). O conteúdo e scripts da skill podem ser reutilizados conforme os termos dessa licença.
+Este projeto está sob a licença [MIT](LICENSE). Consulte o arquivo da licença para os termos de uso, modificação e redistribuição.
